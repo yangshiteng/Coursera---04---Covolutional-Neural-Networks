@@ -58,3 +58,11 @@
 ![image](https://user-images.githubusercontent.com/60442877/156944308-0d4fe3ce-5236-487e-85de-3dfa9b2e6e11.png)
  
 Convolution layer -> Pooling Layer -> onvolution layer -> Pooling Layer -> Fully Connected Layer -> Fully Connected Layer -> Output Layer(SoftMax)
+
+## 1.10 Why Convolutions?
+
+- Reduce the parameters to be learned in back-propagation
+- Parameter Sharing: A feature detector (such as a vertical edge detector) that's useful in one part of the image is probably useful in another part of the image
+- Sparsity of Connection: In each layer, each output value depends only on a small number of inputs
+- make CNN be very good at capturing the "Translation Invariance" (a picture of cat shifted a couple of pixels to the right is still pretty clearly cat, and CNN can find the fact that an image shifted a few pixels should result in pretty similar features and should probably be assigned the same output label)
+
