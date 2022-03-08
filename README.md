@@ -68,3 +68,45 @@ Convolution layer -> Pooling Layer -> onvolution layer -> Pooling Layer -> Fully
 - Sparsity of Connection: In each layer, each output value depends only on a small number of inputs
 - make CNN be very good at capturing the "Translation Invariance" (a picture of cat shifted a couple of pixels to the right is still pretty clearly cat, and CNN can find the fact that an image shifted a few pixels should result in pretty similar features and should probably be assigned the same output label)
 
+
+
+# Week 2
+
+## 1.1 Outline
+
+Classic Networks:
+1. LeNet-5
+2. AlexNet
+3. VGG
+4. ResNet
+
+### LeNet-5
+
+- The goal of LeNet-5 is to recognize handwritten digits
+- Trained on grayscale images (only one channel)(32x32x1)
+- quite old neural network model
+![image](https://user-images.githubusercontent.com/60442877/157272246-3205e030-0a66-476e-b489-41d0be30ae89.png)
+
+### AlexNet
+
+- input image is 227x227x3
+![image](https://user-images.githubusercontent.com/60442877/157274693-1d9b69d7-00bb-4d2e-806c-e49e7b463d51.png)
+
+### VGG-16
+
+- filers are all 3x3 with stride = 1 and same padding
+- all max-pooling are 2x2 with stride = 2
+- The 16 refers to the fact that this has 16 layers that have weights
+![image](https://user-images.githubusercontent.com/60442877/157283612-6d2fa97e-42e7-4a17-8d8d-c66fe4d33c0b.png)
+
+### ResNets
+
+- Residual Networks
+- Very, very deep neural networks are difficult to train, because of vanishing and exploding gradient types of problems
+- ResNets are built out of something called a residual block
+- Skip Connection and Residual Block
+![image](https://user-images.githubusercontent.com/60442877/157289100-0e17e14e-7147-4e2c-af8e-57be723db844.png)
+![image](https://user-images.githubusercontent.com/60442877/157289839-e4c8f57f-4994-4cd4-a37c-ab505615c4c5.png)
+- If you train the plain Neural network (without residual blocks), empirically, you find that as you increase the number of layers, the training error will tend to decrease after a while but then they will tend to go back up. However, in theory, as you make a neural network deeper, it should only do better and better on the training set.
+- Residual Blocks really help with the vanishing and exploding gradient problems, and allow you to train much deeper neural networks without loss in performance
+
