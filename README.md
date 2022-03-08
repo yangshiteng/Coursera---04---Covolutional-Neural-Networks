@@ -110,3 +110,23 @@ Classic Networks:
 - If you train the plain Neural network (without residual blocks), empirically, you find that as you increase the number of layers, the training error will tend to decrease after a while but then they will tend to go back up. However, in theory, as you make a neural network deeper, it should only do better and better on the training set.
 - Residual Blocks really help with the vanishing and exploding gradient problems, and allow you to train much deeper neural networks without loss in performance
 
+### Why ResNets work?
+
+- ResNets can train very very deep Neural Networks without the loss in performance
+![image](https://user-images.githubusercontent.com/60442877/157297719-2ae4daae-f777-4d4b-b02c-2cbd2c456bdc.png)
+
+### Convolution Layer with 1x1 filter
+
+- can be used to shrink the number of channels of input volumn, and therefore, save on computation in some networks
+- can even increase the number of channels of input volumn
+![image](https://user-images.githubusercontent.com/60442877/157305937-4f2ff1e1-5364-4bb7-be5d-fd1a9f52677b.png)
+
+### Inception Network
+
+- Instead of choosing what filter size you want in a convolutional layer, or even do you want a convolutional layer or a pooling layer? Let's do them all
+- 
+
+
+
+
+
