@@ -52,6 +52,8 @@
 ![image](https://user-images.githubusercontent.com/60442877/156942904-e4b509cd-0c0e-41c3-9e54-589993f2bbf4.png)
 ![image](https://user-images.githubusercontent.com/60442877/156942914-7a7c9354-24ab-43e1-b224-84afdd09aced.png)
 ![image](https://user-images.githubusercontent.com/60442877/156942951-dbd1a6f0-f055-4010-9559-0921f74bae72.png)
+![image](https://user-images.githubusercontent.com/60442877/157139633-e50d0c54-b56b-4d1b-b4ed-77f4ebf71fcc.png)
+
 
 ## 1.9 CNN example (Complete)
 
