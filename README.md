@@ -121,12 +121,14 @@ Classic Networks:
 - can even increase the number of channels of input volumn
 ![image](https://user-images.githubusercontent.com/60442877/157305937-4f2ff1e1-5364-4bb7-be5d-fd1a9f52677b.png)
 
-### Inception Network
+### Inception Network (Inception Moduel)
 
-- Instead of choosing what filter size you want in a convolutional layer, or even do you want a convolutional layer or a pooling layer? Let's do them all
-- 
-
-
-
+- When designing a layer for a ConvNet, you might have to pick, do you want a 1 by 3 filter, or 3 by 3, or 5 by 5, or do you want a pooling layer? What the inception network does is it says, why should you do them all? And this makes the network architecture more complicated, but it also works remarkably well. 
+![image](https://user-images.githubusercontent.com/60442877/158007137-3b5043c5-40ff-4fed-bff6-2885801fb6fb.png)
+- It has the problem of computational cost
+![image](https://user-images.githubusercontent.com/60442877/158007446-55ce5c7e-0d30-4acd-bea1-05d85c9c5d0e.png)
+- Reduece the computation by introducing the 1x1 convolution
+![image](https://user-images.githubusercontent.com/60442877/158007616-1ac6e19e-f7de-45ed-ba52-55b8f0e5801f.png)
+- if you are building a layer of a neural network and you don't want to have to decide, do you want a 1 by 1, or 3 by 3, or 5 by 5, or pooling layer, the inception module lets you say let's do them all, and let's concatenate the results. And then we run to the problem of computational cost. And what you saw here was how using a 1 by 1 convolution, you can create this bottleneck layer thereby reducing the computational cost significantly. Now you might be wondering, does shrinking down the representation size so dramatically, does it hurt the performance of your neural network? It turns out that so long as you implement this bottleneck layer so that within reason, you can shrink down the representation size significantly, and it doesn't seem to hurt the performance, but saves you a lot of computation. So these are the key ideas of the inception module.
 
 
