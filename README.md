@@ -115,13 +115,13 @@ Classic Networks:
 - ResNets can train very very deep Neural Networks without the loss in performance
 ![image](https://user-images.githubusercontent.com/60442877/157297719-2ae4daae-f777-4d4b-b02c-2cbd2c456bdc.png)
 
-### Convolution Layer with 1x1 filter
+## Convolution Layer with 1x1 filter
 
 - can be used to shrink the number of channels of input volumn, and therefore, save on computation in some networks
 - can even increase the number of channels of input volumn
 ![image](https://user-images.githubusercontent.com/60442877/157305937-4f2ff1e1-5364-4bb7-be5d-fd1a9f52677b.png)
 
-### Inception Network (Inception Moduel)
+## Inception Network (Inception Moduel)
 
 - When designing a layer for a ConvNet, you might have to pick, do you want a 1 by 3 filter, or 3 by 3, or 5 by 5, or do you want a pooling layer? What the inception network does is it says, why should you do them all? And this makes the network architecture more complicated, but it also works remarkably well. 
 ![image](https://user-images.githubusercontent.com/60442877/158007137-3b5043c5-40ff-4fed-bff6-2885801fb6fb.png)
