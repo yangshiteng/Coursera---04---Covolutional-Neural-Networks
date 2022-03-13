@@ -152,10 +152,17 @@ The operation of Depthwise Convolution is very similar to the pooling layer oper
 #### Pointwise Convolution (just usual convolution operation)
 
 ![image](https://user-images.githubusercontent.com/60442877/158046268-f1552bc4-e61b-4efc-b045-6882f96f275e.png)
+ 
+#### Cost Comparison
+
 ![image](https://user-images.githubusercontent.com/60442877/158046359-90763a5e-ca80-4b3d-a0c6-decc7257b496.png)
 ![image](https://user-images.githubusercontent.com/60442877/158046448-bbd06b5e-8e72-447a-a6aa-74d4e8d5613e.png)
 
 
+### MobileNet Architecture
+
+![image](https://user-images.githubusercontent.com/60442877/158047179-ea9af8f4-0367-47b2-99c8-112f3d422682.png)
+![image](https://user-images.githubusercontent.com/60442877/158047390-8f06825b-3f49-494d-9f51-e1b5b18a0c09.png)
 
 
 
