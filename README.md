@@ -72,7 +72,7 @@ Convolution layer -> Pooling Layer -> onvolution layer -> Pooling Layer -> Fully
 
 # Week 2
 
-## 1.1 Outline
+## Outline
 
 Classic Networks:
 1. LeNet-5
@@ -132,5 +132,32 @@ Classic Networks:
 - if you are building a layer of a neural network and you don't want to have to decide, do you want a 1 by 1, or 3 by 3, or 5 by 5, or pooling layer, the inception module lets you say let's do them all, and let's concatenate the results. And then we run to the problem of computational cost. And what you saw here was how using a 1 by 1 convolution, you can create this bottleneck layer thereby reducing the computational cost significantly. Now you might be wondering, does shrinking down the representation size so dramatically, does it hurt the performance of your neural network? It turns out that so long as you implement this bottleneck layer so that within reason, you can shrink down the representation size significantly, and it doesn't seem to hurt the performance, but saves you a lot of computation. So these are the key ideas of the inception module.
 ![image](https://user-images.githubusercontent.com/60442877/158044872-a9ed1675-9373-446c-a8bd-da2ce19cf048.png)
 ![image](https://user-images.githubusercontent.com/60442877/158044976-c2761d28-a31e-4314-bce2-2145e576d5f0.png)
+
+## MobileNet
+
+- MobileNets will allow you to build and deploy neural networks that work even in low compute environment, such as a mobile phone. 
+- Why do you need another neural network architecture? It turns out in other neural networks you've learned about so far are quite computationally expensive. If you want your neural network to run on a device with less powerful CPU or a GPU at deployment, then there's another neural network architecture called the MobileNet that could perform much better. 
+![image](https://user-images.githubusercontent.com/60442877/158045217-aebdc15e-533e-4302-94cd-aed2d268e2c5.png)
+![image](https://user-images.githubusercontent.com/60442877/158045577-ab93a4d4-1b3a-432e-aa17-4a88cc51fce5.png)
+
+### MobileNet - Depthwise Separable Convolution
+
+![image](https://user-images.githubusercontent.com/60442877/158045610-8c921762-ceab-48c8-8ebf-593c4d416aba.png)
+
+#### Depthwise Convolution (pooling operation style)
+
+The operation of Depthwise Convolution is very similar to the pooling layer operation, except that we need to do the sum of dot product instead of the max pooling or average pooling.
+![image](https://user-images.githubusercontent.com/60442877/158046083-d9c449bc-87fa-4322-9822-b1f26ace1ee6.png)
+
+#### Pointwise Convolution (just usual convolution operation)
+
+![image](https://user-images.githubusercontent.com/60442877/158046268-f1552bc4-e61b-4efc-b045-6882f96f275e.png)
+![image](https://user-images.githubusercontent.com/60442877/158046359-90763a5e-ca80-4b3d-a0c6-decc7257b496.png)
+![image](https://user-images.githubusercontent.com/60442877/158046448-bbd06b5e-8e72-447a-a6aa-74d4e8d5613e.png)
+
+
+
+
+
 
 
