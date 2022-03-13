@@ -130,5 +130,7 @@ Classic Networks:
 - Reduece the computation by introducing the 1x1 convolution
 ![image](https://user-images.githubusercontent.com/60442877/158007616-1ac6e19e-f7de-45ed-ba52-55b8f0e5801f.png)
 - if you are building a layer of a neural network and you don't want to have to decide, do you want a 1 by 1, or 3 by 3, or 5 by 5, or pooling layer, the inception module lets you say let's do them all, and let's concatenate the results. And then we run to the problem of computational cost. And what you saw here was how using a 1 by 1 convolution, you can create this bottleneck layer thereby reducing the computational cost significantly. Now you might be wondering, does shrinking down the representation size so dramatically, does it hurt the performance of your neural network? It turns out that so long as you implement this bottleneck layer so that within reason, you can shrink down the representation size significantly, and it doesn't seem to hurt the performance, but saves you a lot of computation. So these are the key ideas of the inception module.
+![image](https://user-images.githubusercontent.com/60442877/158044872-a9ed1675-9373-446c-a8bd-da2ce19cf048.png)
+![image](https://user-images.githubusercontent.com/60442877/158044976-c2761d28-a31e-4314-bce2-2145e576d5f0.png)
 
 
