@@ -179,3 +179,38 @@ So if you're developing a computer vision application, a very common workflow wo
 - If you're building a computer vision application rather than training the ways from scratch, from random initialization, you often make much faster progress if you download ways that someone else has already trained on the network architecture and use that as pre-training and transfer that to a new task that you might be interested in. The computer vision research community has been pretty good at posting lots of data sets on the Internet so if you hear of things like Image Net, or MS COCO, or Pascal types of data sets, these are the names of different data sets that people have post online and a lot of computer researchers have trained their algorithms on. Sometimes these training takes several weeks and might take many GP use and the fact that someone else has done this and gone through the painful high-performance search process, means that you can often download open-source ways that took someone else many weeks or months to figure out and use that as a very good initialization for your own neural network. And use transfer learning to sort of transfer knowledge from some of these very large public data sets to your own problem.
 ![image](https://user-images.githubusercontent.com/60442877/158050500-ada51221-a19d-4c2e-9230-8de7f4fcfee8.png)
 - In all the different disciplines, in all the different applications of deep learning, I think that computer vision is one where transfer learning is something that you should almost always do unless, you have an exceptionally large data set to train everything else from scratch yourself. But transfer learning is just very worth seriously considering unless you have an exceptionally large data set and a very large computation budget to train everything from scratch by yourself.
+
+
+### Data Augmentation
+
+Most computer vision task could use more data. And so data augmentation is one of the techniques that is often used to improve the performance of computer vision systems.
+
+Data Augmentation Methods:
+1. Mirroring
+![image](https://user-images.githubusercontent.com/60442877/158095235-012a70ae-0243-47b5-9d13-0b64c3c68bc9.png)
+2. Random Cropping
+![image](https://user-images.githubusercontent.com/60442877/158095365-359516bd-35b3-4908-9cc5-ffb411b1644b.png)
+3. Rotation
+4. Shearing
+5. Local warping..
+6. Color shifting
+![image](https://user-images.githubusercontent.com/60442877/158096834-8af63b15-9bda-4b82-af7c-c44e34c4c659.png)
+
+
+### State of Computer Vision
+
+Deep learning has been successfully applied to computer vision, natural language processing, speech recognition, online advertising, logistics, many, many, many problems. There are a few things that are unique about the application of deep learning to computer vision, about the status of computer vision.
+![image](https://user-images.githubusercontent.com/60442877/158098553-c7530491-9c7a-4a22-91a7-0b31018fc4ac.png)
+
+### Tips for doing well on benchmarks or winning competitions
+
+1. Ensembling 
+2. Multi-crop at test time
+![image](https://user-images.githubusercontent.com/60442877/158099863-bf9267ba-86da-400b-a8ff-63ba20d8131c.png)
+![image](https://user-images.githubusercontent.com/60442877/158100047-37658c44-03f4-49a9-a327-fc412f242f4e.png)
+
+
+
+
+
+
