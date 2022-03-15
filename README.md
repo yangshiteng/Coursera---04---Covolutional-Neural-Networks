@@ -114,6 +114,7 @@ Classic Networks:
 
 - ResNets can train very very deep Neural Networks without the loss in performance
 ![image](https://user-images.githubusercontent.com/60442877/157297719-2ae4daae-f777-4d4b-b02c-2cbd2c456bdc.png)
+![image](https://user-images.githubusercontent.com/60442877/158300358-a2003d9b-4fba-460a-b2ae-1df742f07a9e.png)
 
 ## Convolution Layer with 1x1 filter
 
