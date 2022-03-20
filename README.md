@@ -262,6 +262,8 @@ Fortunately however, this problem of computational cost has a pretty good soluti
 
 ![image](https://user-images.githubusercontent.com/60442877/159154521-cc0746d1-35ed-4e9e-bdca-ac8549a59786.png)
 
+In the above figure, the 14x14x3 images' convolutional neural network is used to perform the classification task, and without change the setting of filters or max pooling, we can apply this Convenet to 16x16x3 image, and the final output is 2x2x4, which shows 4 classification results for 4 different sliding.
+
 ![image](https://user-images.githubusercontent.com/60442877/159154686-910e80a1-2194-4b2e-921f-ce46da7e3cf0.png)
 
 To implement sliding windows, previously, what you do is you crop out a region. Let's say this is 14 by 14 and run that through your convnet and do that for the next region over, then do that for the next 14 by 14 region, then the next one, then the next one, then the next one, then the next one and so on, until hopefully that one recognizes the car. But now, instead of doing it sequentially, with this convolutional implementation that you saw in the previous slide, you can implement the entire image, all maybe 28 by 28 and convolutionally make all the predictions at the same time by one forward pass through this big convnet and hopefully have it recognize the position of the car. So that's how you implement sliding windows convolutionally and it makes the whole thing much more efficient. Now, this algorithm still has one weakness, which is the position of the bounding boxes is not going to be too accurate. In the next video, let's see how you can fix that problem.
