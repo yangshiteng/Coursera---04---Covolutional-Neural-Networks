@@ -210,8 +210,17 @@ Deep learning has been successfully applied to computer vision, natural language
 ![image](https://user-images.githubusercontent.com/60442877/158099863-bf9267ba-86da-400b-a8ff-63ba20d8131c.png)
 ![image](https://user-images.githubusercontent.com/60442877/158100047-37658c44-03f4-49a9-a327-fc412f242f4e.png)
 
+# Week 3
 
+This week you learn about object detection. This is one of the areas of computer vision that's just exploding and is working so much better than just a couple of years ago. In order to build up to object detection, you first learn about object localization, which means not only do you have to label this as say a car but the algorithm also is responsible for putting a bounding box, or drawing a red rectangle around the position of the car in the image. So that's called the classification with localization problem, where the term localization refers to figuring out where in the picture is the car you've detective. 
+![image](https://user-images.githubusercontent.com/60442877/159142563-d84e5bb2-193a-4ccd-a31e-d89e7eea0318.png)
+Later this week, you then learn about the detection problem where now there might be multiple objects in the picture and ,you have to detect them all and and localized them all. And if you're doing this for an autonomous driving application, then you might need to detect not just other cars, but maybe other pedestrians and motorcycles and maybe even other objects. So you'll see that later this week.
+![image](https://user-images.githubusercontent.com/60442877/159142636-06faa530-7a1c-4d9a-8a49-ce143f4c6af9.png)
 
+## Object Localization
 
+![image](https://user-images.githubusercontent.com/60442877/159142757-75bdaac4-5682-4d62-bd40-cfbd64bb425c.png)
+So now if your training set contains not just the object class label, which a neural network is trying to predict up here, but it also contains four additional numbers. Giving the bounding box then you can use supervised learning to make your algorithm outputs not just a class label but also the four parameters to tell you where is the bounding box of the object you detected. So in this example the ideal bx might be about 0.5 because this is about halfway to the right to the image. by might be about 0.7 since it's about maybe 70% to the way down to the image. bh might be about 0.3 because the height of this red square is about 30% of the overall height of the image. And bw might be about 0.4 let's say because the width of the red box is about 0.4 of the overall width of the entire image.
 
-
+### Defining the target label y and loss function
+![image](https://user-images.githubusercontent.com/60442877/159142976-47ea8de8-c03e-4a5c-b539-c07bce6b873a.png)
