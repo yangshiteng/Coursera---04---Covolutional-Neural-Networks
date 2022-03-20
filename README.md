@@ -229,3 +229,26 @@ So now if your training set contains not just the object class label, which a ne
 ### Defining the target label y and loss function
 
 ![image](https://user-images.githubusercontent.com/60442877/159142976-47ea8de8-c03e-4a5c-b539-c07bce6b873a.png)
+
+
+## Landmark Detection
+
+In the previous video, you saw how you can get a neural network to output four numbers of bx, by, bh, and bw to specify the bounding box of an object you want a neural network to localize. In more general cases, you can have a neural network just output X and Y coordinates of important points and image, sometimes called landmarks, that you want the neural networks to recognize.
+
+![image](https://user-images.githubusercontent.com/60442877/159150485-ebe2d1d4-6452-4ca6-b2da-96a1ae3d48ca.png)
+
+
+## Sliding Windows Detection 
+
+Let's say you want to build a car detection algorithm. Here's what you can do. You can first create a label training set, so x and y with closely cropped examples of cars. And for our purposes in this training set, you can start off with the one with the car closely cropped images. Meaning that x is pretty much only the car. So, you can take a picture and crop out and just cut out anything else that's not part of a car. So you end up with the car centered in pretty much the entire image. Given this label training set, you can then train a ConvNet that inputs an image, like one of these closely cropped images. And then the job is to output y, zero or one, is there a car or not. Once you've trained up this ConvNet you can then use it in Sliding Windows Detection.
+
+![image](https://user-images.githubusercontent.com/60442877/159151531-ac7d984c-98b4-4ab8-99b1-baea13344e08.png)
+
+If you have a test image like this what you do is you start by picking a certain window size, shown down there. And then you would input into this ConvNet a small rectangular region. So, take just this below red square, input that into the ConvNet, and have a ConvNet make a prediction. And presumably for that little region in the red square, it'll say, no that little red square does not contain a car. In the Sliding Windows Detection Algorithm, what you do is you then pass as input a second image now bounded by this red square shifted a little bit over and feed that to the ConvNet. So, you're feeding just the region of the image in the red squares of the ConvNet and run the ConvNet again. And then you do that with a third image and so on. And you keep going until you've slid the window across every position in the image. 
+
+![image](https://user-images.githubusercontent.com/60442877/159151955-88d3f4a9-ca62-41a9-8b07-1d4e01969e24.png)
+
+Now there's a huge disadvantage of Sliding Windows Detection, which is the computational cost. Because you're cropping out so many different square regions in the image and running each of them independently through a ConvNet. And if you use a very coarse stride, a very big stride, a very big step size, then that will reduce the number of windows you need to pass through the ConvNet, but that courser granularity may hurt performance. Whereas if you use a very fine granularity or a very small stride, then the huge number of all these little regions you're passing through the ConvNet means that means there is a very high computational cost.
+
+Fortunately however, this problem of computational cost has a pretty good solution. In particular, the Sliding Windows Object Detector can be implemented convolutionally or much more efficiently
+
