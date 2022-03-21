@@ -296,4 +296,6 @@ In the object detection task, you expected to localize the object as well. So if
 
 One of the problems of Object Detection as you've learned about this so far, is that your algorithm may find multiple detections of the same objects. Rather than detecting an object just once, it might detect it multiple times. Non-max suppression is a way for you to make sure that your algorithm detects each object only once.
 
+![image](https://user-images.githubusercontent.com/60442877/159192743-357c7719-78db-4514-87a0-d3a4246a8664.png)
+
 
