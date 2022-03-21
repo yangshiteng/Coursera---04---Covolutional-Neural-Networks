@@ -298,4 +298,22 @@ One of the problems of Object Detection as you've learned about this so far, is 
 
 ![image](https://user-images.githubusercontent.com/60442877/159192743-357c7719-78db-4514-87a0-d3a4246a8664.png)
 
+## Anchor Boxes (make a grid cell detect multiple object)
 
+One of the problems with object detection as you have seen it so far is that each of the grid cells can detect only one object. What if a grid cell wants to detect multiple objects? Here is what you can do. You can use the idea of anchor boxes.
+
+![image](https://user-images.githubusercontent.com/60442877/159330752-66659101-5629-4927-a70c-76d110477297.png)
+
+![image](https://user-images.githubusercontent.com/60442877/159331832-1fd1ce6e-190b-4534-b755-ba791ed961b2.png)
+
+![image](https://user-images.githubusercontent.com/60442877/159332765-d2ded804-9792-4cf6-b9b7-546485ae58aa.png)
+
+## YOLO object detection algorithm
+
+You've already seen most of the components of object detection. In this video, let's put all the components together to form the YOLO object detection algorithm. 
+
+![image](https://user-images.githubusercontent.com/60442877/159335280-6385f160-b8b5-40db-a4cd-7327af055fc9.png)
+
+![image](https://user-images.githubusercontent.com/60442877/159335851-80b2c1b4-507a-4ce2-87ed-04a44ff8120a.png)
+
+![image](https://user-images.githubusercontent.com/60442877/159336501-2bdda275-71db-4be9-a3b6-3968679d19c9.png)
