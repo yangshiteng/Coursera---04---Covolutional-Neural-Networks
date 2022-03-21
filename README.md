@@ -268,8 +268,32 @@ In the above figure, the 14x14x3 images' convolutional neural network is used to
 
 To implement sliding windows, previously, what you do is you crop out a region. Let's say this is 14 by 14 and run that through your convnet and do that for the next region over, then do that for the next 14 by 14 region, then the next one, then the next one, then the next one, then the next one and so on, until hopefully that one recognizes the car. But now, instead of doing it sequentially, with this convolutional implementation that you saw in the previous slide, you can implement the entire image, all maybe 28 by 28 and convolutionally make all the predictions at the same time by one forward pass through this big convnet and hopefully have it recognize the position of the car. So that's how you implement sliding windows convolutionally and it makes the whole thing much more efficient. Now, this algorithm still has one weakness, which is the position of the bounding boxes is not going to be too accurate. In the next video, let's see how you can fix that problem.
 
+### Bounding Box Predictions
+
+In the last video, you learned how to use a convolutional implementation of sliding windows. That's more computationally efficient, but it still has a problem of not quite outputting the most accurate bounding boxes. In this video, let's see how you can get your bounding box predictions to be more accurate. 
+
+#### YOLO Algorithm
+
+YOLO stands for, you only look once 
+
+![image](https://user-images.githubusercontent.com/60442877/159190182-95fb4379-691b-42f2-bb1d-a4551d4c2265.png)
+
+And so what you do is you have an input X which is the input image like that, and you have these target labels Y which are 3 by 3 by 8, and you use back-propagation to train the neural network to map from any input X to this type of output volume Y. So the advantage of this algorithm is that the neural network outputs precise bounding boxes as follows. So at test time, what you do is you feed an input image X and run forward prop until you get this output Y. And then for each of the nine outputs of each of the 3 by 3 positions in which of the output, you can then just read off 1 or 0. Is there an object associated with that one of the nine positions? And that there is an object, what object it is, and where is the bounding box for the object in that grid cell? And so long as you don't have more than one object in each grid cell, this algorithm should work okay. And the problem of having multiple objects within the grid cell is something we'll address later.
+
+![image](https://user-images.githubusercontent.com/60442877/159190561-8d576e77-43d9-493f-873c-f4b8bb4c38b4.png)
 
 
+## Intersection Over Union Function (Evaluate the bounding box)
 
+So how do you tell if your object detection algorithm is working well? In this video, you'll learn about a function called, "Intersection Over Union". And as we use it both for evaluating your object detection algorithm, as well as in the next video, using it to add another component to your object detection algorithm, to make it work even better.
+
+![image](https://user-images.githubusercontent.com/60442877/159191109-a753955a-4ba8-4b72-8886-fc141b30790b.png)
+
+In the object detection task, you expected to localize the object as well. So if that's the ground-truth bounding box, and if your algorithm outputs this bounding box in purple, is this a good outcome or a bad one? So what the intersection over union function does, or IoU does, is it computes the intersection over union of these two bounding boxes. So, the union of these two bounding boxes is this area, is really the area that is contained in either bounding boxes, whereas the intersection is this smaller region here. So what the intersection of a union does is it computes the size of the intersection. So that orange shaded area, and divided by the size of the union, which is that green shaded area. And by convention, the low compute division task will judge that your answer is correct if the IoU is greater than 0.5. And if the predicted and the ground-truth bounding boxes overlapped perfectly, the IoU would be one, because the intersection would equal to the union. But in general, so long as the IoU is greater than or equal to 0.5, then the answer will look okay, look pretty decent. And by convention, very often 0.5 is used as a threshold to judge as whether the predicted bounding box is correct or not.
+
+
+## Non-Max Suppression (detect each object only once)
+
+One of the problems of Object Detection as you've learned about this so far, is that your algorithm may find multiple detections of the same objects. Rather than detecting an object just once, it might detect it multiple times. Non-max suppression is a way for you to make sure that your algorithm detects each object only once.
 
 
