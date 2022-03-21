@@ -317,3 +317,48 @@ You've already seen most of the components of object detection. In this video, l
 ![image](https://user-images.githubusercontent.com/60442877/159335851-80b2c1b4-507a-4ce2-87ed-04a44ff8120a.png)
 
 ![image](https://user-images.githubusercontent.com/60442877/159336501-2bdda275-71db-4be9-a3b6-3968679d19c9.png)
+
+
+## Semantic Segmentation with U-Net
+
+Semantic segmentation, where the goal is to draw a careful outline around the object that is detected so that you know exactly which pixels belong to the object and which pixels don't.
+
+What is semantic segmentation? Let's say you're building a self-driving car and you see an input image like this and you'd like to detect the position of the other cars. If you use an object detection algorithm, the goal may be to draw bounding boxes like these around the other vehicles. This might be good enough for self-driving car, but if you want your learning algorithm to figure out what is every single pixel in this image, then you may use a semantic segmentation algorithm whose goal is to output this. Where, for example, rather than detecting the road and trying to draw a bounding box around the roads, which isn't going to be that useful, with semantic segmentation the algorithm attempts to label every single pixel as is this drivable roads or not, indicated by the dark green there. One of the uses of semantic segmentation is that it is used by some self-driving car teams to figure out exactly which pixels are safe to drive over because they represent a drivable surface.
+
+![image](https://user-images.githubusercontent.com/60442877/159352536-095b445a-7849-45ef-8553-4457c53aebd5.png)
+
+![image](https://user-images.githubusercontent.com/60442877/159354906-50a96c9c-c55f-42b8-9135-07ab338269b6.png)
+
+Here's a familiar convolutional neural network architecture, where you input an image which is fed forward through multiple layers in order to generate a class label y hat. In order to change this architecture into a semantic segmentation architecture, let's get rid of the last few layers and one key step of semantic segmentation is that, whereas the dimensions of the image have been generally getting smaller as we go from left to right, it now needs to get bigger so they can gradually blow it back up to a full-size image, which is a size you want for the output. 
+
+![image](https://user-images.githubusercontent.com/60442877/159357617-17b4e24f-de3a-4d1e-a3e9-0d29b64e1634.png)
+
+Specifically, this is what a unit architecture looks like. As we go deeper into the unit, the height and width will go back up while the number of channels will decrease so the unit architecture looks like this until eventually, you get your segmentation map of the cat. One operation we have not yet covered is what does this look like? To make the image bigger. To explain how that works, you have to know how to implement a transpose convolution. That's semantic segmentation, a very useful algorithm for many computer vision applications where the key idea is you have to take every single pixel and label every single pixel individually with the appropriate class label. As you've seen in this video, a key step to do that is to take a small set of activations and to blow it up to a bigger set of activations. In order to do that, you have to implement something called the transpose convolution, which is important operation that is used multiple times in the unit architecture.
+
+![image](https://user-images.githubusercontent.com/60442877/159357670-1d1544dd-d5ff-4350-8548-db8101b2f66f.png)
+
+### Transpose Convolutions
+
+The transpose convolution is a key part of the unit architecture. How do you take a two-by-two inputs and blow it up into a four- by-four-dimensional output? The transpose convolution lets you do that.
+
+You're familiar with the normal convolution in which a typical layer of a new network may input a six by six by three image, convolve that with a set of, say, three by three by three filters and if you have five of these, then you end up with an output that is four by four by five. A transpose convolution looks a bit difference. You might inputs a two-by-two, said that activation, convolve that with a three by three filter, and end up with an output that is four by four, that's bigger than the original inputs.
+
+![image](https://user-images.githubusercontent.com/60442877/159361094-bef9ca40-dcb3-4eef-aa87-83cce3ef23a4.png)
+
+![image](https://user-images.githubusercontent.com/60442877/159362212-6c871f66-4c90-4ce6-aee1-71c92c77eaaf.png)
+ 
+![image](https://user-images.githubusercontent.com/60442877/159362520-8d44511e-bb73-4c75-931b-1d1e8ea90389.png)
+
+![image](https://user-images.githubusercontent.com/60442877/159362842-7c2df038-1a23-4dd5-8e82-58ff720e81c7.png)
+
+![image](https://user-images.githubusercontent.com/60442877/159363039-80289440-6d1e-4ea9-89da-9ed94ec392d9.png)
+
+
+### U-Net Architecture
+
+![image](https://user-images.githubusercontent.com/60442877/159366051-1f990637-bd98-48da-a0e5-d2bed99a4bbe.png)
+
+![image](https://user-images.githubusercontent.com/60442877/159366680-e403b823-0fb1-4d62-aceb-50ec8f3f0781.png)
+
+
+
