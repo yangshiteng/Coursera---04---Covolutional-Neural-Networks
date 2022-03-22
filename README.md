@@ -358,7 +358,7 @@ You're familiar with the normal convolution in which a typical layer of a new ne
 
 ![image](https://user-images.githubusercontent.com/60442877/159366051-1f990637-bd98-48da-a0e5-d2bed99a4bbe.png)
 
-![image](https://user-images.githubusercontent.com/60442877/159366680-e403b823-0fb1-4d62-aceb-50ec8f3f0781.png)
+![image](https://user-images.githubusercontent.com/60442877/159499335-44a79b0d-d29b-4f92-9178-08932bd50e3e.png)
 
-
+The dimensions of this output layer is going to be h by w, so the same dimensions as our original input by number of classes. So if you have three classes to try and recognize, this will be three. If you have ten different classes to try to recognize in your segmentation at then that last number will be ten. And so what this does is for every one of your pixels you have h by w pixels, you have, an array or a vector, essentially of n classes numbers that tells you for our pixel how likely is that pixel to come from each of these different classes. And if you take a arg max over these n classes, then that's how you classify each of the pixels into one of the classes, and you can visualize it like the segmentation map showing on the right
 
