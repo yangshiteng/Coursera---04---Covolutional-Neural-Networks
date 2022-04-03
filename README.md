@@ -388,3 +388,58 @@ So instead, to make this work, what you're going to do instead is learn a simila
 And so this is how you address the face verification problem. To use this for a recognition task, what you do is, given this new picture, you will use this function d to compare these two images. And maybe I'll output a very large number, let's say 10, for this example. And then you compare this with the second image in your database. And because these two are the same person, hopefully you output a very small number. You do this for the other images in your database and so on.
 
 And based on this, you would figure out that this is actually that person, which is Danielle. And in contrast, if someone not in your database shows up, as you use the function d to make all of these pairwise comparisons, hopefully d will output have a very large number for all four pairwise comparisons. And then you say that this is not any one of the four persons in the database. Notice how this allows you to solve the one-shot learning problem. So long as you can learn this function d, which inputs a pair of images and tells you, basically, if they're the same person or different persons. Then if you have someone new join your team, you can add a fifth person to your database, and it just works fine.
+
+
+## Siamese Network
+
+The job of the function d, which you learned about in the last video, is to input two faces and tell you how similar or how different they are. A good way to do this is to use a Siamese network.
+
+![image](https://user-images.githubusercontent.com/60442877/161446389-f4ddfdae-c947-40a7-b76d-90f9d3b25c39.png)
+
+You're used to seeing pictures of confidence like these where you input an image, let's say x1. And through a sequence of convolutional and pulling and fully connected layers, end up with a feature vector like that. And sometimes this is fed to a softmax unit to make a classification. We're not going to use that in this video. Instead, we're going to focus on this vector of let's say 128 numbers computed by some fully connected layer that is deeper in the network. And I'm going to give this list of 128 numbers a name. I'm going to call this f of x1, and you should think of f of x1 as an encoding of the input image x1. So it's taken the input image, here this picture of Kian, and is re-representing it as a vector of 128 numbers. The way you can build a face recognition system is then that if you want to compare two pictures, let's say this first picture with this second picture here. What you can do is feed this second picture to the same neural network with the same parameters and get a different vector of 128 numbers, which encodes this second picture. So I'm going to call this second picture. So I'm going to call this encoding of this second picture f of x2, and here I'm using x1 and x2 just to denote two input images. They don't necessarily have to be the first and second examples in your training sets. It can be any two pictures. Finally, if you believe that these encodings are a good representation of these two images, what you can do is then define the image d of distance between x1 and x2 as the norm of the difference between the encodings of these two images.
+
+![image](https://user-images.githubusercontent.com/60442877/161446561-24c6effb-5793-485a-bd1f-28491a28885c.png)
+
+So more formally, the parameters of the neural network define an encoding f of xi. So given any input image xi, the neural network outputs this 128 dimensional encoding f of xi. So more formally, what you want to do is learn parameters so that if two pictures, xi and xj, are of the same person, then you want that distance between their encodings to be small. And in the previous slide, l was using x1 and x2, but it's really any pair xi and xj from your training set. And in contrast, if xi and xj are of different persons, then you want that distance between their encodings to be large. So as you vary the parameters in all of these layers of the neural network, you end up with different encodings. And what you can do is use back propagation to vary all those parameters in order to make sure these conditions are satisfied.
+
+
+## Triplet Loss
+
+One way to learn the parameters of the neural network, so that it gives you a good encoding for your pictures of faces, is to define and apply gradient descent on the triplet loss function. 
+
+![image](https://user-images.githubusercontent.com/60442877/161448013-a31656cd-434a-4619-90a9-378528d22fd8.png)
+
+This is what gives rise to the term triplet loss, which is that you always be looking at three images at a time. You'll be looking at an anchor image, a positive image, as well as a negative image. 
+
+If f always output zero, then this is 0 minus 0, which is 0, this is 0 minus 0, which is 0, and so, well, by saying f of any image equals a vector of all zero's, you can see almost trivially satisfy this equation. To make sure that the neural network doesn't just output zero, for all the encodings, or to make sure that it doesn't set all the encodings equal to each other. Another way for the neural network to give a trivial outputs is if the encoding for every image was identical to the encoding to every other image, in which case you again get 0 minus 0. To prevent your neural network from doing that, what we're going to do is modify this objective to say that this doesn't need to be just less than equal to zero, it needs to be quite a bit smaller than zero. In particular, if we say this needs to be less than negative Alpha, where Alpha is another hyperparameter then this prevents a neural network from outputting the trivial solutions. 
+
+![image](https://user-images.githubusercontent.com/60442877/161450263-62bcf061-ee88-4929-b75b-7e2ca515e7b6.png)
+
+If you have a training set of say, 10,000 pictures with 1,000 different persons, what you'd have to do is take your 10,000 pictures and use it to generate, to select triplets like this, and then train your learning algorithm using gradient descent on this type of cost function, which is really defined on triplets of images drawn from your training set. Notice that in order to define this dataset of triplets, you do need some pairs of A and P, pairs of pictures of the same person. For the purpose of training your system, you do need a dataset where you have multiple pictures of the same person. That's why in this example I said if you have 10,000 pictures of 1,000 different persons, so maybe you have ten pictures, on average of each of your 1,000 persons to make up your entire dataset. If you had just one picture of each person, then you can't actually train this system. But of course, after having trained a system, you can then apply it to your one-shot learning problem where for your face recognition system, maybe you have only a single picture of someone you might be trying to recognize. But for your training set, you do need to make sure you have multiple images of the same person, at least for some people in your training set, so that you can have pairs of anchor and positive images. 
+
+![image](https://user-images.githubusercontent.com/60442877/161452624-ba041665-8821-4576-9712-6e5390947682.png)
+
+Now, how do you actually choose these triplets to form your training set? One of the problems is if you choose A, P, and N randomly from your training set, subject to A and P being the same person and A and N being different persons, one of the problems is that if you choose them so that they're random, then this constraint is very easy to satisfy. Because given two randomly chosen pictures of people, chances are A and N are much different than A and P. If you choose the triplets randomly, then too many triplets would be really easy and gradient descent won't do anything because you're Neural Network would get them right pretty much all the time. It's only by choosing ''hard'' to triplets that the gradient descent procedure has to do some work to try to push these quantities further away from those quantities
+
+![image](https://user-images.githubusercontent.com/60442877/161452857-8dcfd75a-667c-4fcf-bfec-12f75f911ae8.png)
+
+
+## Face Verification and Binary Classification
+
+The Triplet Loss is one good way to learn the parameters of a ConvNet for face recognition. There's another way to learn these parameters. Let me show you how face recognition can also be posed as a straight binary classification problem. 
+
+![image](https://user-images.githubusercontent.com/60442877/161453213-cb87a839-6097-4a56-b345-53af6306c366.png)
+
+![image](https://user-images.githubusercontent.com/60442877/161453419-50a44fe6-2b1e-4409-8a58-b41e3cffee06.png)
+
+Another way to train a neural network, is to take this pair of neural networks to take this Siamese Network and have them both compute these embeddings, maybe 128 dimensional embeddings, maybe even higher dimensional, and then have these be input to a logistic regression unit to then just make a prediction. Where the target output will be one if both of these are the same persons, and zero if both of these are of different persons. So, this is a way to treat face recognition just as a binary classification problem. And this is an alternative to the triplet loss for training a system like this. Now, what does this final logistic regression unit actually do? The output y hat will be a sigmoid function, applied to some set of features but rather than just feeding in, these encodings, what you can do is take the differences between the encodings. 
+
+Lastly, just to mention, one computational trick that can help neural deployment significantly, which is that, if this is the new image, so this is an employee walking in hoping that the turnstile the doorway will open for them and that this is from your database image. Then instead of having to compute, this embedding every single time, where you can do is actually pre-compute that, so, when the new employee walks in, what you can do is use this upper components to compute that encoding and use it, then compare it to your pre-computed encoding and then use that to make a prediction y hat. Because you don't need to store the raw images and also because if you have a very large database of employees, you don't need to compute these encodings every single time for every employee database. This idea of free computing, some of these encodings can save a significant computation. And this type of pre-computation works both for this type of Siamese Central architecture where you treat face recognition as a binary classification problem, as well as, when you were learning encodings maybe using the Triplet Loss function as described in the last couple of videos. 
+
+![image](https://user-images.githubusercontent.com/60442877/161453388-7f44f042-eaeb-4dfc-955d-0c8c286e16c1.png)
+
+
+
+
+
+
