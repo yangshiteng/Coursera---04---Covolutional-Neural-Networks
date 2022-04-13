@@ -438,7 +438,11 @@ Lastly, just to mention, one computational trick that can help neural deployment
 
 ![image](https://user-images.githubusercontent.com/60442877/161453388-7f44f042-eaeb-4dfc-955d-0c8c286e16c1.png)
 
+## Neural Style Transfer
 
+One of the most fun and exciting applications of ConvNet recently has been Neural Style Transfer. You get to implement this yourself and generate your own artwork in the problem exercise. But what is Neural Style Transfer? Let me show you a few examples. Let's say you take this image, this is actually taken from the Stanford University not far from my Stanford office and you want this picture recreated in the style of this image on the right. This is actually Van Gogh's, Starry Night painting. What Neural Style Transfer allows you to do is generated new image like the one below which is a picture of the Stanford University Campus that painted but drawn in the style of the image on the right
+
+![image](https://user-images.githubusercontent.com/60442877/163197627-6f1224e7-87a1-4ce7-9f17-8d5b355f6080.png)
 
 
 
