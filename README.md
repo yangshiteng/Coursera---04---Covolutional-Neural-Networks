@@ -444,6 +444,37 @@ One of the most fun and exciting applications of ConvNet recently has been Neura
 
 ![image](https://user-images.githubusercontent.com/60442877/163197627-6f1224e7-87a1-4ce7-9f17-8d5b355f6080.png)
 
+### What are deep ConvNets Learning?
 
+What are deep ConvNets really learning? In this video, I want to share with you some visualizations that will help you hone your intuition about what the deeper layers of a ConvNet really are doing. And this will help us think through how you can implement neural style transfer as well
+
+![image](https://user-images.githubusercontent.com/60442877/163202090-8609635c-3ae8-46ac-9faa-645fee02fe13.png)
+
+![image](https://user-images.githubusercontent.com/60442877/163203107-8c523cc9-0b45-4c31-bd4c-6dd82cd63d02.png)
+
+And what does the neural network then learning at a deeper layers. So in the deeper layers, a hidden unit will see a larger region of the image. Where at the extreme end each pixel could hypothetically affect the output of these later layers of the neural network. So later units are actually seen larger image patches
+
+### Cost Function for Neural Style Transfer
+
+To build a Neural Style Transfer system, let's define a cost function for the generated image. What you see later is that by minimizing this cost function, you can generate the image that you want. Remember what the problem formulation is. You're given a content image C, given a style image S and you goal is to generate a new image G. In order to implement neural style transfer, what you're going to do is define a cost function J of G that measures how good is a particular generated image and we'll use gradient descent to minimize J of G in order to generate this image.
+
+![image](https://user-images.githubusercontent.com/60442877/163209572-e689b581-e02c-4e72-9b71-ede6b1530f1a.png)
+
+How good is a particular image? Well, we're going to define two parts to this cost function. The first part is called the content cost. This is a function of the content image and of the generated image and what it does is it measures how similar is the contents of the generated image to the content of the content image C. And then going to add that to a style cost function which is now a function of (S,G) and what this does is it measures how similar is the style of the image G to the style of the image S. Finally, we'll weight these with two hyper parameters alpha and beta to specify the relative weighting between the content costs and the style cost.
+
+![image](https://user-images.githubusercontent.com/60442877/163209990-91e88db2-fc85-48b4-acf0-1ab0aba254be.png)
+
+The way the algorithm would run is as follows, having to find the cost function J of G in order to actually generate a new image what you do is the following. You would initialize the generated image G randomly so it might be 100 by 100 by 3 or 500 by 500 by 3 or whatever dimension you want it to be. Then we'll define the cost function J of G on the previous slide. What you can do is use gradient descent to minimize this so you can update G as G minus the derivative respect to the cost function of J of G. In this process, you're actually updating the pixel values of this image G which is a 100 by 100 by 3 maybe rgb channel image.
+
+### Content Cost Function
+
+![image](https://user-images.githubusercontent.com/60442877/163264630-52bc6320-430e-46df-9c5c-c64a09672654.png)
+
+
+### Style Cost Function
+
+![image](https://user-images.githubusercontent.com/60442877/163264983-6e896b2c-9a3e-4584-b222-ca5ca6a39c3a.png)
+
+![image](https://user-images.githubusercontent.com/60442877/163266568-121ff6a3-f91a-4723-b02d-c60d1161acf9.png)
 
 
