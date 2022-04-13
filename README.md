@@ -478,3 +478,16 @@ The way the algorithm would run is as follows, having to find the cost function 
 ![image](https://user-images.githubusercontent.com/60442877/163266568-121ff6a3-f91a-4723-b02d-c60d1161acf9.png)
 
 ![image](https://user-images.githubusercontent.com/60442877/163269753-c4eedf50-dd77-4967-ab36-6b9b0e4e5e70.png)
+
+### 1D and 3D Generalizations
+
+![image](https://user-images.githubusercontent.com/60442877/163273950-e981f35e-6905-4df7-a467-dfdb9ce5fe39.png)
+
+![image](https://user-images.githubusercontent.com/60442877/163274127-11a4cba1-a552-4804-96fc-bdcfa1f2ab2e.png)
+
+![image](https://user-images.githubusercontent.com/60442877/163274652-5abe1f4c-9d99-46b3-8dc2-002f38c8fc8f.png)
+
+
+
+
+
