@@ -402,6 +402,9 @@ You're used to seeing pictures of confidence like these where you input an image
 
 So more formally, the parameters of the neural network define an encoding f of xi. So given any input image xi, the neural network outputs this 128 dimensional encoding f of xi. So more formally, what you want to do is learn parameters so that if two pictures, xi and xj, are of the same person, then you want that distance between their encodings to be small. And in the previous slide, l was using x1 and x2, but it's really any pair xi and xj from your training set. And in contrast, if xi and xj are of different persons, then you want that distance between their encodings to be large. So as you vary the parameters in all of these layers of the neural network, you end up with different encodings. And what you can do is use back propagation to vary all those parameters in order to make sure these conditions are satisfied.
 
+![image](https://user-images.githubusercontent.com/60442877/163826361-be735258-0407-4a62-9fc2-a92bd67c9608.png)
+
+
 
 ## Triplet Loss
 
